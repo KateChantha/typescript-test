@@ -131,3 +131,21 @@ const {age, name}: {age:number; name:string} = profile;
 const {
   coords: {lat, lng}
 } : {coords: {lat: number; lng:number}} = profile
+
+// ==========================================
+// Udemy TypeScript - Array
+// ==========================================
+
+// benefit of auto method complete
+const carList = ['ford', 'Honda'];
+// typeScript auto suggest .map()
+// typeScript able to detect that car is string and giving string method suggestion 
+carList.map(car => {
+  return car.toUpperCase()
+})
+
+// nested array
+const carByMake: string[][] = [];
+// FLexible types
+const importantDates: (Date | string)[] = [new Date()];
+importantDates.push('2030-10-10');
