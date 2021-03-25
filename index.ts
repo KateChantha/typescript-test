@@ -55,3 +55,79 @@ declare function create(obj:object | null):void {
 }
 // create({prop: 0})
 // create(null)
+
+// ====================================
+// Udemy TypeScript section 26
+// ====================================
+
+// example of type inference
+const today = new Date();
+today.getFullYear() // auto complete method suggestion
+
+class Person {}
+const teacher = new Person();
+
+// use type anotation when TypeScript can not predict the value type
+// 1) Function that returns the 'any' type
+const json = '{"x": 10, "y": 20}'
+const coordinates:{x:number; y:number} =JSON.parse(json) 
+// 2) when we declare a variable on one line and initailize it later
+// 3) Variable whose type cannot ge inferred correctly
+const numbers = [-10, -1, 12]
+let numberAboveZero: boolean | number = false;
+
+numbers.forEach(element => {
+  if (element > 0) numberAboveZero = element;
+});
+
+// ====================================
+// Udemy TypeScript - Function
+// ====================================
+
+// anotate the return value will enforce the logic in the body to retrun number
+const add = (a: number,b:number):number => {
+  return a + b;
+} 
+// suggest to anotate the return value - use case when we forgot to return value, we'll get a warning
+const subtract = (a: number,b:number):number => {
+  a - b;
+}
+
+// Not anotate the return value, Typescipt will predict the return value with type interence
+const addAgain = (a: number,b:number) => {
+  return a + b;
+} 
+
+// ====================================
+// Udemy TypeScript - Destructuring 
+// ====================================
+
+const todayWeather = {
+  date: new Date(),
+  weather: 'sunny'
+}
+const logWeather = ({
+  date, 
+  weather
+}:{date:Date; 
+  weather:string
+}):void => {
+  console.log(date, weather)
+}
+
+// ==========================================
+// Udemy TypeScript - Object & Destructuring
+// ==========================================
+const profile = {
+  name: 'alex',
+  age: 20,
+  coords: {lat:0, lng:15},
+  setAge(age:number):void {
+    this.age = age;
+  }
+}
+
+const {age, name}: {age:number; name:string} = profile;
+const {
+  coords: {lat, lng}
+} : {coords: {lat: number; lng:number}} = profile
